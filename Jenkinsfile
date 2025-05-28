@@ -11,6 +11,8 @@ pipeline {
     }
     stage ("run backend") {
       steps  {
+        echo 'init Gradle...'
+        sh 'gradle init'  // --type basic
         echo 'executing gradle...'
         withGradle() {
           echo 'check gradle version...'
