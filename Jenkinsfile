@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools {
-      gradle 8.14.1
+      gradle "gradle-8.14.1"
   }
   stages {
     stage("run frontend"){
@@ -14,12 +14,16 @@ pipeline {
     }
     stage ("run backend") {
       steps  {
-        echo 'init Gradle...'
-        sh 'gradle init'  // --type basic
         echo 'executing gradle...'
         withGradle() {
           echo 'check gradle version...'
-          sh './gradlew -v'
+          sh 'gradle -v'  // --type basic
+          sh 'pwd'
+          sh 'ls -la'
+        //   echo 'init Gradle...'
+        //   sh 'gradle init'  // --type basic
+          // sh 'ls ./gradlew'
+          // sh './gradlew -v'
         }
       }
     }
